@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "/assets/Logo.png";
 import Icon from "/assets/Icon.png";
 import { useState } from "react";
@@ -8,38 +8,41 @@ const Navbar = () => {
   const [nav, setNav] = useState(false);
 
   const handleClick = () => setNav((prev) => !prev);
-  const linkClass = "px-2 py-2 ";
+
+  // STYLING
+  const linkClass = "px-2 py-2 font-semibold";
   const mobileMenuClass = nav
     ? "flex flex-col absolute  top-0 right-0 w-[300px] h-screen bg-slate-800 items-center justify-center"
     : "hidden";
   const mobileLinkClass = "mb-2 text-xl";
   const selectClass = "bg-slate-800 z-100";
+
   return (
     <nav className="bg-slate-500 border-b border-slate-300 text-white w-full h-20 mx-auto flex items-center justify-between px-[10%]">
-      <a href="/">
+      <NavLink to="/">
         <img
           src={Logo}
-          // src={nav ? { Icon } : { Logo }}
+          //src={nav ? Icon : Logo}
           alt="nav_logo"
-          className="w-auto h-40 z-10"
+          className="w-auto h-32 z-10"
         />
-      </a>
+      </NavLink>
       <div className="">
         <ul className="hidden md:flex ">
           {["Home", "Features", "Pricing", "Blogs"].map((item, index) => (
             <li key={index}>
-              <a href="/" className={linkClass}>
+              <Link to={index === 0 ? "/" : `/${item}`} className={linkClass}>
                 {item}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
       </div>
-      <div className="">
+      <div className="flex items-center gap-6">
         <select
           name=""
           id=""
-          className="bg-transparent outline-none border rounded-md px-1 py-1 mr-2"
+          className="bg-transparent outline-none border rounded-md px-2 py-2 cursor-pointer font-semibold"
         >
           <option className={selectClass} value="USD">
             USD
@@ -54,6 +57,9 @@ const Navbar = () => {
             NGN
           </option>
         </select>
+        <button className="flex outline-none border border-white py-1 px-4 rounded-md cursor-pointer font-semibold">
+          Sign up
+        </button>
       </div>
 
       {/* MOBILE DISPLAY */}
