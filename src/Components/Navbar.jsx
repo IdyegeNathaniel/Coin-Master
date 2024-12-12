@@ -1,13 +1,40 @@
 import { Link, NavLink } from "react-router-dom";
 import Logo from "/assets/Logo.png";
 import Icon from "/assets/Icon.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { CoinContext } from "../Context/CoinContext";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
+  const { setCurrency } = useContext(CoinContext);
 
   const handleClick = () => setNav((prev) => !prev);
+
+  const handleCurrency = (e) => {
+    switch (e.target.value) {
+      case "usd": {
+        setCurrency({ name: "usd", symbol: "$" });
+        break;
+      }
+      case "eur": {
+        setCurrency({ name: "eur", symbol: "€" });
+        break;
+      }
+      case "inr": {
+        setCurrency({ name: "inr", symbol: "₹" });
+        break;
+      }
+      case "ngn": {
+        setCurrency({ name: "ngn", symbol: "₦" });
+        break;
+      }
+      default: {
+        setCurrency({ name: "usd", symbol: "$" });
+        break;
+      }
+    }
+  };
 
   // STYLING
   const linkClass = "px-2 py-2 font-semibold";
@@ -40,20 +67,19 @@ const Navbar = () => {
       </div>
       <div className="flex items-center gap-6">
         <select
-          name=""
-          id=""
+          onChange={handleCurrency}
           className="bg-transparent outline-none border rounded-md px-2 py-2 cursor-pointer font-semibold"
         >
-          <option className={selectClass} value="USD">
+          <option className={selectClass} value="usd">
             USD
           </option>
-          <option className={selectClass} value="INR">
+          <option className={selectClass} value="inr">
             INR
           </option>
-          <option className={selectClass} value="EUR">
+          <option className={selectClass} value="eur">
             USD
           </option>
-          <option className={selectClass} value="NGN">
+          <option className={selectClass} value="ngn">
             NGN
           </option>
         </select>
