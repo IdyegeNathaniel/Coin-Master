@@ -40,7 +40,7 @@ const Hero = ({
           </form>
         </div>
         <div className="bg-slate-950 rounded-md text-gray-300 max-w-[800px] mx-auto my-20">
-          <div className="grid grid-cols-[0.5fr_2fr_1fr_1fr_1.5fr] py-4 px-5 items-center gap-4 border-b border-b-gray-400 font-semibold">
+          <div className="grid grid-cols-[0.5fr_3fr_1.5fr_1fr] md:grid-cols-[0.5fr_2fr_1fr_1fr_1.5fr] py-4 px-5 items-center gap-4 border-b border-b-gray-400 font-semibold text-[12px] md:text-xl">
             {["#", "Coin", "Price", "24H Change", "Market Cap"].map(
               (item, index) => (
                 <p
@@ -49,7 +49,7 @@ const Hero = ({
                     index === 3
                       ? "text-center"
                       : index === 4
-                      ? "text-right"
+                      ? "text-right hidden md:grid"
                       : "text-left"
                   }
                 >
@@ -59,7 +59,7 @@ const Hero = ({
             )}
           </div>
           {displayCoin.slice(0, 10).map((item, index) => (
-            <div className="grid grid-cols-[0.5fr_2fr_1fr_1fr_1.5fr] py-4 px-5 items-center font-medium gap-4 border-b border-b-gray-400 last:border-none">
+            <div className="grid grid-cols-[0.5fr_3fr_1.5fr_1fr] md:grid-cols-[0.5fr_2fr_1fr_1fr_1.5fr] py-4 px-5 items-center font-medium gap-4 border-b border-b-gray-400 last:border-none text-[12px] md:text-xl">
               <p key={index}>{item.market_cap_rank}</p>
               <div className="flex items-center gap-2">
                 <img src={item.image} alt="coin_image" className="w-5" />
@@ -78,7 +78,7 @@ const Hero = ({
               >
                 {Math.floor(item.price_change_percentage_24h * 100) / 100}
               </p>
-              <p key={index} className="text-right">
+              <p key={index} className="text-right hidden md:grid">
                 {currency.symbol} {item.market_cap.toLocaleString()}
               </p>
             </div>

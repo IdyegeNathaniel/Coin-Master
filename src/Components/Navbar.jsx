@@ -49,7 +49,7 @@ const Navbar = () => {
       <NavLink to="/">
         <picture>
           {/* Show small logo on smaller screens */}
-          <source media="(max-width: 768px)" srcSet={Icon} className="w-10" />
+          <source media="(max-width: 768px)" srcSet={Icon} />
           {/* Default to larger logo */}
           <img src={Logo} alt="nav_logo" className="w-16 md:w-40 z-10" />
         </picture>
@@ -68,7 +68,7 @@ const Navbar = () => {
       <div className="flex items-center gap-6">
         <select
           onChange={handleCurrency}
-          className="bg-transparent outline-none border rounded-md px-2 py-2 cursor-pointer font-semibold"
+          className="bg-transparent outline-none border rounded-md px-1 py-1 md:text-l text-sm md:px-2 md:py-2 cursor-pointer font-semibold"
         >
           <option className={selectClass} value="usd">
             USD
@@ -83,7 +83,7 @@ const Navbar = () => {
             NGN
           </option>
         </select>
-        <button className="flex outline-none border border-white py-1 px-4 rounded-md cursor-pointer font-semibold">
+        <button className="flex outline-none border border-white px-2 py-1 md:text-l text-sm md:px-4 md:py-1 rounded-md cursor-pointer font-semibold">
           Sign up
         </button>
       </div>
