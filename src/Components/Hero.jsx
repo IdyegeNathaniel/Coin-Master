@@ -39,8 +39,8 @@ const Hero = ({
             </div>
           </form>
         </div>
-        <div className="bg-slate-950 rounded-md text-gray-300 w-[800px] my-20">
-          <div className="grid grid-cols-[0.5fr_2fr_1fr_1fr_1.5fr] py-4 px-5 items-center font-medium gap-4 border-b border-b-gray-400">
+        <div className="bg-slate-950 rounded-md text-gray-300 max-w-[800px] mx-auto my-20">
+          <div className="grid grid-cols-[0.5fr_2fr_1fr_1fr_1.5fr] py-4 px-5 items-center gap-4 border-b border-b-gray-400 font-semibold">
             {["#", "Coin", "Price", "24H Change", "Market Cap"].map(
               (item, index) => (
                 <p
@@ -59,16 +59,23 @@ const Hero = ({
             )}
           </div>
           {displayCoin.slice(0, 10).map((item, index) => (
-            <div className="grid grid-cols-[0.5fr_2fr_1fr_1fr_1.5fr] py-4 px-5 items-center font-medium gap-4 border-b border-b-gray-400">
+            <div className="grid grid-cols-[0.5fr_2fr_1fr_1fr_1.5fr] py-4 px-5 items-center font-medium gap-4 border-b border-b-gray-400 last:border-none">
               <p key={index}>{item.market_cap_rank}</p>
-              <div className="flex">
-                <img src={item.image} alt="coin_image" className="w-5 mr-2" />
+              <div className="flex items-center gap-2">
+                <img src={item.image} alt="coin_image" className="w-5" />
                 <p key={index}>{item.name + " - " + item.symbol}</p>
               </div>
               <p key={index}>
                 {currency.symbol} {item.current_price.toLocaleString()}
               </p>
-              <p key={index} className="text-center">
+              <p
+                key={index}
+                className={
+                  item.price_change_percentage_24h > 0
+                    ? "text-green-700 text-center"
+                    : "text-red-700 text-center"
+                }
+              >
                 {Math.floor(item.price_change_percentage_24h * 100) / 100}
               </p>
               <p key={index} className="text-right">

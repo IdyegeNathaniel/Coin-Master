@@ -47,12 +47,12 @@ const Navbar = () => {
   return (
     <nav className="bg-slate-500 border-b border-slate-300 text-white w-full h-20 mx-auto flex items-center justify-between px-[10%]">
       <NavLink to="/">
-        <img
-          src={Logo}
-          //src={nav ? Icon : Logo}
-          alt="nav_logo"
-          className="w-auto h-32 z-10"
-        />
+        <picture>
+          {/* Show small logo on smaller screens */}
+          <source media="(max-width: 768px)" srcSet={Icon} className="w-10" />
+          {/* Default to larger logo */}
+          <img src={Logo} alt="nav_logo" className="w-16 md:w-40 z-10" />
+        </picture>
       </NavLink>
       <div className="">
         <ul className="hidden md:flex ">
