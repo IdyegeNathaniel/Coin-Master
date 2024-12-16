@@ -77,7 +77,7 @@ const Navbar = () => {
             INR
           </option>
           <option className={selectClass} value="eur">
-            USD
+            EUR
           </option>
           <option className={selectClass} value="ngn">
             NGN
@@ -99,7 +99,7 @@ const Navbar = () => {
       <ul className={mobileMenuClass}>
         {["Home", "Features", "Pricing", "Blogs"].map((item, index) => (
           <li key={index} className={mobileLinkClass}>
-            <a href="/">{item}</a>
+            <Link to={index === 0 ? "/" : `/${item}`}>{item}</Link>
           </li>
         ))}
       </ul>
