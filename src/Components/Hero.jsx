@@ -63,16 +63,16 @@ const Hero = ({
               <p key={index}>{item.market_cap_rank}</p>
               <div className="flex">
                 <img src={item.image} alt="coin_image" className="w-5 mr-2" />
-                <p key={index}>{item.symbol + " - " + item.name}</p>
+                <p key={index}>{item.name + " - " + item.symbol}</p>
               </div>
               <p key={index}>
-                {currency.symbol} {item.current_price}
+                {currency.symbol} {item.current_price.toLocaleString()}
               </p>
               <p key={index} className="text-center">
-                {item.price_change_24h}
+                {Math.floor(item.price_change_percentage_24h * 100) / 100}
               </p>
               <p key={index} className="text-right">
-                {item.market_cap}
+                {currency.symbol} {item.market_cap.toLocaleString()}
               </p>
             </div>
           ))}
