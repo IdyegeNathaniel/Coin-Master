@@ -12,7 +12,7 @@ const NotFoundPage = () => {
         to="/"
         className="bg-yellow-400 text-white text-sm font-bold px-4 py-2 mt-4 rounded-md"
       >
-        Return to Home
+        Return Home
       </Link>
     </section>
   );

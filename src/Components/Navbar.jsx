@@ -58,7 +58,10 @@ const Navbar = () => {
         <ul className="hidden md:flex ">
           {["Home", "Features", "Pricing", "Blogs"].map((item, index) => (
             <li key={index}>
-              <Link to={index === 0 ? "/" : `/${item}`} className={linkClass}>
+              <Link
+                to={index === 0 ? "/" : `/${item.toLowerCase()}`}
+                className={linkClass}
+              >
                 {item}
               </Link>
             </li>
