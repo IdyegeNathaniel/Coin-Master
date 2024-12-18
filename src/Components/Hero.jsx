@@ -8,10 +8,23 @@ const Hero = ({
 }) => {
   const { allCoin, currency } = useContext(CoinContext);
   const [displayCoin, setDisplayCoin] = useState([]);
+  const [input, setInput] = useState("");
 
   useEffect(() => {
     setDisplayCoin(allCoin);
   }, [allCoin]);
+
+  const handleInput = (e) => {
+    setInput(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const coins = await allCoin.filter((item) => {
+      return item.name.toLowerCase().includes(input.toLowerCase());
+    });
+    setDisplayCoin(coins);
+  };
 
   return (
     <section className="bg-gradient-to-t from-slate-800 via-slate-700 to-slate-500 min-h-screen">
@@ -27,11 +40,14 @@ const Hero = ({
               <input
                 type="text"
                 name="text"
+                onChange={handleInput}
                 placeholder="Search Crypto Name/Keyword"
                 className="w-full py-2 px-3 text-black text-[12px] md:text-lg font-bold outline-none"
+                required
               />
               <button
                 type="submit"
+                onClick={handleSubmit}
                 className="bg-slate-950 text-white py-2 px-4 h-full"
               >
                 Search
@@ -40,7 +56,7 @@ const Hero = ({
           </form>
         </div>
         <div className="bg-slate-950 rounded-md text-gray-300 max-w-[800px] mx-auto my-20">
-          <div className="grid grid-cols-[0.5fr_3fr_1.5fr_1fr] md:grid-cols-[0.5fr_2fr_1fr_1fr_1.5fr] py-4 px-5 items-center gap-4 border-b border-b-gray-400 font-semibold text-[12px] md:text-xl">
+          <div className="grid grid-cols-[0.5fr_3fr_1.5fr_1fr] md:grid-cols-[0.5fr_2fr_1fr_1fr_1.5fr] py-4 px-5 items-center gap-4 border-b border-b-gray-400 font-medium text-[12px] md:text-lg">
             {["#", "Coin", "Price", "24H Change", "Market Cap"].map(
               (item, index) => (
                 <p
@@ -59,17 +75,19 @@ const Hero = ({
             )}
           </div>
           {displayCoin.slice(0, 10).map((item, index) => (
-            <div className="grid grid-cols-[0.5fr_3fr_1.5fr_1fr] md:grid-cols-[0.5fr_2fr_1fr_1fr_1.5fr] py-4 px-5 items-center font-medium gap-4 border-b border-b-gray-400 last:border-none text-[12px] md:text-xl">
-              <p key={index}>{item.market_cap_rank}</p>
+            <div
+              key={index}
+              className="grid grid-cols-[0.5fr_3fr_1.5fr_1fr] md:grid-cols-[0.5fr_2fr_1fr_1fr_1.5fr] py-4 px-5 items-center gap-4 border-b border-b-gray-400 last:border-none text-[12px] md:text-[15px]"
+            >
+              <p>{item.market_cap_rank}</p>
               <div className="flex items-center gap-2">
-                <img src={item.image} alt="coin_image" className="w-5" />
+                <img src={item.image} alt="coin_image" className="w-4 md:w-5" />
                 <p key={index}>{item.name + " - " + item.symbol}</p>
               </div>
-              <p key={index}>
+              <p>
                 {currency.symbol} {item.current_price.toLocaleString()}
               </p>
               <p
-                key={index}
                 className={
                   item.price_change_percentage_24h > 0
                     ? "text-green-700 text-center"
@@ -78,7 +96,7 @@ const Hero = ({
               >
                 {Math.floor(item.price_change_percentage_24h * 100) / 100}
               </p>
-              <p key={index} className="text-right hidden md:grid">
+              <p className="text-right hidden md:grid">
                 {currency.symbol} {item.market_cap.toLocaleString()}
               </p>
             </div>
