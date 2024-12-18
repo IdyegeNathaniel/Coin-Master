@@ -40,6 +40,7 @@ const Hero = ({
               <input
                 type="text"
                 name="text"
+                value={input}
                 onChange={handleInput}
                 placeholder="Search Crypto Name/Keyword"
                 className="w-full py-2 px-3 text-black text-[12px] md:text-lg font-bold outline-none"
