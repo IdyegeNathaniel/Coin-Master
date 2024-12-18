@@ -4,8 +4,30 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-body{
+@layer base {
+  body {
     font-family: "Outfit", sans-serif;
-}
+  }
+  .spinner {
+    display: grid;
+    place-self: center;
+    min-height: 80vh;
+  }
+  .spin {
+    height: 70px;
+    width: 70px;
+    place-self: center;
+    border-radius: 50%;
+    border: 5px solid white;
+    border-top-color: slateblue;
+    animation: rotate 2s infinite;
+  }
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+    50% {
+      transform: rotate(-360deg);
+    }
+  }
 }
