@@ -10,12 +10,14 @@ const CoinChart = ({ coinsChart }) => {
     if (coinsChart.prices) {
       coinsChart.prices.map((item) => {
         dataCopy.push([
-          `${new Date(item[0]).toLocaleDateString().slice(0, -5)}`.item[1],
+          `${new Date(item[0]).toLocaleDateString().slice(0, -5)}`,
+          item[1],
         ]);
+        setData(dataCopy);
       });
     }
   }, [coinsChart]);
-  return <Chart chartType="LineChart" />;
+  return <Chart chartType="LineChart" data={data} height="100%" legendToggle />;
 };
 
 export default CoinChart;

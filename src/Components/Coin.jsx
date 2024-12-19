@@ -49,23 +49,27 @@ const Coin = () => {
 
   if (coinData && coinsChart) {
     return (
-      <section className="bg-gradient-to-t from-slate-800 via-slate-700 to-slate-500 max-h-screen py-20">
-        <div className="">
-          <img src={coinData.image.large} alt="coin-image" />
-          <p>
-            <b>
+      <section className="bg-gradient-to-t from-slate-800 via-slate-700 to-slate-500 min-h-screen pt-10">
+        <div className=" flex flex-col justify-center items-center mx-auto">
+          <div className="flex flex-col justify-center items-center">
+            <img
+              src={coinData.image.large}
+              alt="coin-image"
+              className="h-20 w-full mb-3"
+            />
+            <p className="text-gray-300 font-bold mb-4">
               {coinData.name} ({coinData.symbol})
-            </b>
-          </p>
-        </div>
-        <div className="">
-          <CoinChart coinsChart={coinsChart} />
+            </p>
+          </div>
+          <div>
+            <CoinChart coinsChart={coinsChart} />
+          </div>
         </div>
       </section>
     );
   } else {
     return (
-      <section className="bg-gradient-to-t from-slate-800 via-slate-700 to-slate-500 max-h-screen">
+      <section className="bg-gradient-to-t from-slate-800 via0-slate-700 to-slate-500 min-h-screen">
         <div className="spinner">
           <div className="spin"></div>
         </div>
