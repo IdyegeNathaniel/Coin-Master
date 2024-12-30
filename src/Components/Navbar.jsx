@@ -37,7 +37,7 @@ const Navbar = () => {
   };
 
   // STYLING
-  const linkClass = "px-2 py-2 font-semibold";
+  const linkClass = "px-2 py-2 font-semibold text-xl";
   const mobileMenuClass = nav
     ? "flex flex-col absolute  top-0 right-0 w-[300px] h-screen bg-slate-800 items-center justify-center"
     : "hidden";

@@ -36,9 +36,7 @@ const Hero = ({
       <div className="container flex flex-col  mx-auto px-4 pt-10 sm:px-6 lg:px-8 justify-center items-center">
         <div className=" max-w-screen-sm text-center text-white mt-20 mb-5 ">
           <h1 className="text-3xl md:text-5xl mb-4 font-extrabold ">{text}</h1>
-          <p className="text-[12px] md:text-[15px] mb-5 text-gray-400">
-            {subtext}
-          </p>
+          <p className="text-[12px] md:text-lg mb-5 text-gray-400">{subtext}</p>
           <form onSubmit={handleSubmit}>
             <div className="bg-white py-2 px-4 flex items-center justify-center">
               <FaSearch className="text-black flex" />
