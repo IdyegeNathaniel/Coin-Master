@@ -55,7 +55,7 @@ const Coin = () => {
             <img
               src={coinData.image.large}
               alt="coin-image"
-              className="h-20 w-full mb-3"
+              className="h-20 w-full mb-3 rounded-full"
             />
             <p className="text-gray-300 font-bold mb-4">
               {coinData.name} ({coinData.symbol})
@@ -85,6 +85,16 @@ const Coin = () => {
 
             <ul className="flex">
               <li>Coin Market Cap: </li>
+              <li>
+                {currency.symbol}
+                {coinData.market_data.market_cap[
+                  currency.name
+                ].toLocaleString()}
+              </li>
+            </ul>
+           
+            <ul className="flex">
+              <li>AH: </li>
               <li>
                 {currency.symbol}
                 {coinData.market_data.market_cap[
