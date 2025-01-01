@@ -50,18 +50,17 @@ const Coin = () => {
   if (coinData && coinsChart) {
     return (
       <section className="bg-gradient-to-t from-slate-800 via-slate-700 to-slate-500 min-h-screen pt-10">
-        <div className="flex flex-col justify-center items-center">
-          <div className="mx-auto ">
-            <img
-              src={coinData.image.large}
-              alt="coin-image"
-              className="h-20 w-full mb-3 rounded-full"
-            />
-            <p className="text-gray-300 font-bold mb-4">
-              {coinData.name} ({coinData.symbol})
-            </p>
-          </div>
-          <div className="w-full container max-w-[900px] mx-auto">
+        <div className="flex flex-col gap-5 justify-center items-center">
+          <img
+            src={coinData.image.large}
+            alt="coin-image"
+            className="h-20 mb-3 rounded-full"
+          />
+          <p className="text-gray-300 font-bold mb-4 text-4xl">
+            {coinData.name} ({coinData.symbol.toUpperCase()})
+          </p>
+
+          <div className="max-w-[600px] h-250px mx-auto ">
             <CoinChart coinsChart={coinsChart} />
           </div>
 
@@ -92,9 +91,9 @@ const Coin = () => {
                 ].toLocaleString()}
               </li>
             </ul>
-           
+
             <ul className="flex">
-              <li>AH: </li>
+              <li>ATH: </li>
               <li>
                 {currency.symbol}
                 {coinData.market_data.market_cap[
