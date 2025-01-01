@@ -4,6 +4,9 @@ import { CoinContext } from "../Context/CoinContext";
 import CoinChart from "./CoinChart";
 
 const Coin = () => {
+
+  // REUSABLE STYLING
+  
   const { coinId } = useParams();
   const [coinData, setCoinData] = useState();
   const [coinsChart, setCoinsChart] = useState();
@@ -65,10 +68,10 @@ const Coin = () => {
         </div>
 
         {/* COIN DETAILS */}
-        <div className=" flex flex-col max-w-[600px] text-gray-300 text-2xl">
-          <ul className="flex justify-between border-b-gray-200 pt-3">
+        <div className=" flex flex-col mx-auto max-w-[600px] text-gray-300 text-base">
+          <ul className="flex justify-between border-b border-gray-400 py-3 mb-3">
             <li>Coin Market Rank: </li>
-            <li>{coinData.market_cap_rank}</li>
+            <li className="font-light">{coinData.market_cap_rank}</li>
           </ul>
 
           <ul className="flex">
