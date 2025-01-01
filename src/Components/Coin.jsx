@@ -4,9 +4,10 @@ import { CoinContext } from "../Context/CoinContext";
 import CoinChart from "./CoinChart";
 
 const Coin = () => {
-
   // REUSABLE STYLING
-  
+  const ulStyling = "flex justify-between border-b border-gray-400 py-3 mb-3";
+  const liStyling = "font-light";
+
   const { coinId } = useParams();
   const [coinData, setCoinData] = useState();
   const [coinsChart, setCoinsChart] = useState();
@@ -52,8 +53,8 @@ const Coin = () => {
 
   if (coinData && coinsChart) {
     return (
-      <section className="bg-gradient-to-t from-slate-800 via-slate-700 to-slate-500 min-h-screen pt-10 px-5">
-        <div className="flex flex-col gap-5 justify-center items-center my-[20px] mx-auto mb-5">
+      <section className="bg-gradient-to-t from-slate-800 via-slate-700 to-slate-500 min-h-screen py-10 px-5">
+        <div className="flex flex-col gap-5 justify-center items-center my-[20px] mx-auto">
           <img
             src={coinData.image.large}
             alt="coin-image"
@@ -68,15 +69,15 @@ const Coin = () => {
         </div>
 
         {/* COIN DETAILS */}
-        <div className=" flex flex-col mx-auto max-w-[600px] text-gray-300 text-base">
-          <ul className="flex justify-between border-b border-gray-400 py-3 mb-3">
-            <li>Coin Market Rank: </li>
-            <li className="font-light">{coinData.market_cap_rank}</li>
+        <div className="bg-slate-950 px-2 py-4 rounded-md shadow-lg flex flex-col mx-auto mt-20 max-w-[600px] text-gray-300 text-base">
+          <ul className={ulStyling}>
+            <li>Coin Market Rank</li>
+            <li className={liStyling}>{coinData.market_cap_rank}</li>
           </ul>
 
-          <ul className="flex">
-            <li>Current Price: </li>
-            <li>
+          <ul className={ulStyling}>
+            <li>Current Price</li>
+            <li className={liStyling}>
               {currency.symbol}
               {coinData.market_data.current_price[
                 currency.name
@@ -84,19 +85,27 @@ const Coin = () => {
             </li>
           </ul>
 
-          <ul className="flex">
-            <li>Coin Market Cap: </li>
-            <li>
+          <ul className={ulStyling}>
+            <li>Coin Market Cap</li>
+            <li className={liStyling}>
               {currency.symbol}
               {coinData.market_data.market_cap[currency.name].toLocaleString()}
             </li>
           </ul>
 
-          <ul className="flex">
-            <li>ATH: </li>
-            <li>
+          <ul className={ulStyling}>
+            <li>24H High</li>
+            <li className={liStyling}>
               {currency.symbol}
-              {coinData.market_data.market_cap[currency.name].toLocaleString()}
+              {coinData.market_data.high_24h[currency.name].toLocaleString()}
+            </li>
+          </ul>
+
+          <ul className={ulStyling}>
+            <li>24H Low</li>
+            <li className={liStyling}>
+              {currency.symbol}
+              {coinData.market_data.low_24h[currency.name].toLocaleString()}
             </li>
           </ul>
         </div>
