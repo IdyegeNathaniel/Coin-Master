@@ -5,7 +5,7 @@ import CoinChart from "./CoinChart";
 
 const Coin = () => {
   // REUSABLE STYLING
-  const ulStyling = "flex justify-between border-b border-gray-400 py-3 mb-3";
+  const ulStyling = "flex justify-between border-b border-gray-600 py-3 mb-3";
   const liStyling = "font-light";
 
   const { coinId } = useParams();
