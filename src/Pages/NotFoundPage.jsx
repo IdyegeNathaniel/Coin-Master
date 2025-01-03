@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 
 const NotFoundPage = () => {
   return (
-    // <section className="bg-gradient-to-t from-slate-800 via-slate-700 to-slate-500 h-96 mb-20 flex flex-col justify-center items-center text-center">
-    <section className="bg-gradient-to-t from-slate-800 via-slate-700 to-slate-500 max-h-screen">
-      <div className="flex flex-col justify-center items-center text-center py-20">
+    <section className="bg-gradient-to-t from-slate-800 via-slate-700 to-slate-500">
+      <div className="flex flex-col mx-auto py-36 items-center">
         <FaSearch className="text-6xl text-yellow-400 mb-4" />
         <h2 className="font-semibold text-xl md:text-4xl text-white mb-4">
           Page Not Found
