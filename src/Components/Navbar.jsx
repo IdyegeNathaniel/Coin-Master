@@ -86,9 +86,6 @@ const Navbar = () => {
             NGN
           </option>
         </select>
-        <button className="flex outline-none border border-white px-2 py-1 md:text-l text-sm md:px-4 md:py-2 rounded-md cursor-pointer font-semibold">
-          Sign up
-        </button>
       </div>
 
       {/* MOBILE DISPLAY */}
